@@ -1,0 +1,20 @@
+{
+  "name": "stp-statusboard/stp-statusboard-librato",
+  "description": "Librato widget for stp-statusboard",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkadiusz Malina",
+      "email": "arkadiusz.malina@schibsted.pl"
+    }
+  ],
+  "require": {
+    "silex/silex": "1.2.*",
+    "stp-statusboard/stp-statusboard-base": "0.1.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "StpBoard\\NewRelic\\": "src"
+    }
+  }
+}

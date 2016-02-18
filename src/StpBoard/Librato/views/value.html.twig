@@ -1,0 +1,19 @@
+<style>
+    .librato {
+        padding: 15px;
+    }
+
+    .librato .name {
+        min-height: 84px;
+        font-size: 30px;
+    }
+
+    .librato .value {
+        font-size: 60px;
+        margin-top: 50px;
+    }
+</style>
+<div class="boardContent librato {{ name|lower }}">
+    <div class="name">{{ name }}</div>
+    <div class="value">{{ data }}</div>
+</div>
