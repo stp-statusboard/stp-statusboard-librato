@@ -29,6 +29,10 @@ class LibratoControllerProvider implements ControllerProviderInterface, BoardPro
             'method' => 'fetchRpmForGraphWidget',
             'template' => 'chart.html.twig',
         ],
+        'average_response_time' => [
+            'method' => 'fetchAverageResponseTimeForGraphWidget',
+            'template' => 'chart.html.twig',
+        ],
     ];
 
     /**
@@ -95,9 +99,9 @@ class LibratoControllerProvider implements ControllerProviderInterface, BoardPro
             throw new LibratoException('Empty chart name');
         }
 
-        $appUser = $request->get('appUser');
-        if (empty($appUser)) {
-            throw new LibratoException('Empty appUser');
+        $apiUser = $request->get('apiUser');
+        if (empty($apiUser)) {
+            throw new LibratoException('Empty apiUser');
         }
 
         $apiToken = $request->get('apiToken');
@@ -125,7 +129,7 @@ class LibratoControllerProvider implements ControllerProviderInterface, BoardPro
 
         return [
             'name' => $name,
-            'appUser' => $appUser,
+            'apiUser' => $apiUser,
             'apiToken' => $apiToken,
             'method' => $method,
             'template' => $template,

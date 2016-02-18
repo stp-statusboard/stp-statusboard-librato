@@ -9,7 +9,8 @@ class LibratoService
 {
     const BASE_URL_V1 = 'https://metrics-api.librato.com/v1';
 
-    const RPM_FOR_GRAPH_WIDGET_URL = self::BASE_URL_V1 . '/metrics/router.connect.perc95?resolution=1&start_date=%s&end_date=%s';
+    const RPM_FOR_GRAPH_WIDGET_URL = self::BASE_URL_V1 . '/metrics/router.connect?resolution=1&start_time=%s&end_time=%s';
+    const AVERAGE_RESPONSE_TIME_URL = self::BASE_URL_V1 . '/metrics/router.service?resolution=1&start_time=%s&end_time=%s';
 
     /**
      * @var Client
@@ -37,6 +38,17 @@ class LibratoService
 
     /**
      * @param array $config
+     *
+     * @return array
+     * @throws LibratoException
+     */
+    public function fetchAverageResponseTimeForGraphWidget($config)
+    {
+        return $this->fetchMetricForGraph($config, self::AVERAGE_RESPONSE_TIME_URL);
+    }
+
+    /**
+     * @param array $config
      * @param string $url
      *
      * @return array
@@ -50,7 +62,7 @@ class LibratoService
         $result = [];
         foreach ($data['measurements']['unassigned'] as $singleStat) {
             $result[] = [
-                'x' => 1000 * (new DateTime($singleStat['measure_time']))->getTimestamp(),
+                'x' => 1000 * (int)$singleStat['measure_time'],
                 'y' => $singleStat['value'],
             ];
         }
