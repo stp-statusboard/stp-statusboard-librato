@@ -33,6 +33,10 @@ class LibratoControllerProvider implements ControllerProviderInterface, BoardPro
             'method' => 'fetchAverageResponseTimeForGraphWidget',
             'template' => 'chart.html.twig',
         ],
+        'error_rate' => [
+            'method' => 'fetchErrorRate',
+            'template' => 'value.html.twig',
+        ],
     ];
 
     /**
