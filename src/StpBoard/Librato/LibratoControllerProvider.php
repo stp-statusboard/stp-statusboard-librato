@@ -70,7 +70,7 @@ class LibratoControllerProvider implements ControllerProviderInterface, BoardPro
                 try {
                     $config = $this->getConfig($request);
 
-                    $result = $this->libratoService->$config['method']($config);
+                    $result = $this->libratoService->{$config['method']}($config);
 
                     return $this->twig->render(
                         $config['template'],
